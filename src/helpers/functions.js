@@ -13,7 +13,6 @@ export const verifyArrayAxisX = (array, word) => {
     if (array.length === word.length) {
         let result = ""
         array.forEach(item => result += item)
-        console.log(result)
         count += verifyWord(word, result)
     }
     else if (array.length > word.length) {
@@ -34,10 +33,28 @@ export const verifyArrayAxisY = (array, word) => {
     if (array.length >= word.length) {
         for (let index = 0; index < array[0].length; index++){
             let result = []
-            array.forEach(value => {
-                 result.push(value[index]) 
-            })
+            array.forEach(value => result.push(value[index]) )
             count += verifyArrayAxisX(result,word)
+        }
+    }
+    return count
+}
+
+export const verifyArrayDiagonal = (array, word)=>{
+    let count = 0
+
+    if (array.length >= word.length) {
+        for (let index = 0; index < array[0].length; index++){
+            if (index <= array[0].length - word.length) {
+                let resultRight = []
+                array.forEach((value,i) => resultRight.push(value[index+i]))
+                count += verifyArrayAxisX(resultRight,word)
+            }
+            else if (index >= word.length - 1) {
+                let resultLeft = []
+                array.forEach((value,i) => resultLeft.push(value[index-i]))
+                count += verifyArrayAxisX(resultLeft,word)
+            }
         }
     }
     return count
