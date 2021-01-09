@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { verifyArrayAxisX, verifyArrayAxisY, verifyArrayDiagonal } from './helpers/functions';
 import { getWordSearchData } from './services/wordSearchService';
-import HomeView from './views/homeView/homeView';
+import GlobalStyle from './styles/globalStyles';
+import HomeView from './views/homeView';
 
 const App =  () => {
     const [data, setData] = useState([])
@@ -21,7 +22,11 @@ const App =  () => {
     }, []);
 
     return ( 
-        <HomeView data={data}></HomeView>
+        <>
+            <GlobalStyle/>
+            <HomeView data={data}></HomeView>
+        </>
+        
      );
 }
  
