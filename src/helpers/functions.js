@@ -1,4 +1,4 @@
-export const verifyWord = (word, result) => {
+const verifyWord = (word, result) => {
     let count = 0
     if (result === word.toUpperCase()) count++
     if (result.split("").reverse().join("") === word.toUpperCase()) count++
@@ -7,7 +7,7 @@ export const verifyWord = (word, result) => {
     return count
 }
 
-export const verifyArrayAxisX = (array, word) => {
+const verifyArrayAxisX = (array, word) => {
     let count = 0
 
     if (array.length === word.length) {
@@ -27,7 +27,7 @@ export const verifyArrayAxisX = (array, word) => {
     return count
 }
 
-export const verifyArrayAxisY = (array, word) => {
+const verifyArrayAxisY = (array, word) => {
     let count = 0
 
     if (array.length >= word.length) {
@@ -40,22 +40,36 @@ export const verifyArrayAxisY = (array, word) => {
     return count
 }
 
-export const verifyArrayDiagonal = (array, word)=>{
+const verifyArrayDiagonal = (array, word)=>{
     let count = 0
 
     if (array.length >= word.length) {
-        for (let index = 0; index < array[0].length; index++){
-            if (index <= array[0].length - word.length) {
-                let resultRight = []
-                array.forEach((value,i) => resultRight.push(value[index+i]))
-                count += verifyArrayAxisX(resultRight,word)
-            }
-            else if (index >= word.length - 1) {
-                let resultLeft = []
-                array.forEach((value,i) => resultLeft.push(value[index-i]))
-                count += verifyArrayAxisX(resultLeft,word)
+        for (let i = 0; i < array.length; i++){
+            for (let j = 0; j < array[i].length; j++){
+                if ((j <= array[i].length - word.length) && (i<= array.length - word.length) ) {
+                    let resultRight = []
+                    for (let k = 0; k < word.length; k++) resultRight.push(array[k+i][k + j])
+                    count += verifyArrayAxisX(resultRight,word)
+                }
+                if ((j >= word.length - 1) && (i<= array.length - word.length)) {
+                    console.log(j)
+                    let resultLeft = []
+                    for (let k = 0; k < word.length; k++) resultLeft.push(array[i + k][j-k])
+                    count += verifyArrayAxisX(resultLeft,word)
+                }
+
             }
         }
     }
     return count
 }
+
+export const verifyAllArrayAxis = (data, selectedItem, word) => {
+    let value = 0
+    // data[selectedItem].forEach(item => value += verifyArrayAxisX(item, word))
+    // value += verifyArrayAxisY(data[selectedItem], word)
+    value += verifyArrayDiagonal(data[selectedItem], word)
+    console.log("value: ", value)
+    return value
+}
+
