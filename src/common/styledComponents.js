@@ -19,3 +19,12 @@ export const Wrapper = styled.div`
     box-shadow:${props => props.shadow || "unset"};
     border-radius:${props => props.radius || "unset"}; 
 `
+
+export const Paragraph = styled.p`
+    font-size:${props => props.size || "16px"};
+    font-weight:${props => props.weight || "regular"};
+    color:${props => props.color || "black"};
+    text-align:${props => props.align || "left"};
+    margin:${props => props.margin || 0};
+
+`

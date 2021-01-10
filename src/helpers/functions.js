@@ -2,8 +2,6 @@ const verifyWord = (word, result) => {
     let count = 0
     if (result === word.toUpperCase()) count++
     if (result.split("").reverse().join("") === word.toUpperCase()) count++
-    console.log("normal: ", result)
-    console.log("reverse: ", result.split("").reverse().join(""))
     return count
 }
 
@@ -52,12 +50,10 @@ const verifyArrayDiagonal = (array, word)=>{
                     count += verifyArrayAxisX(resultRight,word)
                 }
                 if ((j >= word.length - 1) && (i<= array.length - word.length)) {
-                    console.log(j)
                     let resultLeft = []
                     for (let k = 0; k < word.length; k++) resultLeft.push(array[i + k][j-k])
                     count += verifyArrayAxisX(resultLeft,word)
                 }
-
             }
         }
     }
@@ -66,10 +62,9 @@ const verifyArrayDiagonal = (array, word)=>{
 
 export const verifyAllArrayAxis = (data, selectedItem, word) => {
     let value = 0
-    // data[selectedItem].forEach(item => value += verifyArrayAxisX(item, word))
-    // value += verifyArrayAxisY(data[selectedItem], word)
+    data[selectedItem].forEach(item => value += verifyArrayAxisX(item, word))
+    value += verifyArrayAxisY(data[selectedItem], word)
     value += verifyArrayDiagonal(data[selectedItem], word)
-    console.log("value: ", value)
     return value
 }
 

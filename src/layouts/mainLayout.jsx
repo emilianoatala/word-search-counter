@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logotype from '../assets/img/logotype.png'
+import { breakpoint } from '../styles/constants';
 
 const Container = styled.div`
     padding:0 20px;
@@ -8,8 +9,13 @@ const Container = styled.div`
 const Header = styled.div`
     display:flex;
     align-items:center;
+    justify-content:center;
     height:50px;
     width:100%;
+
+    @media (min-width: ${breakpoint}){
+        justify-content:flex-start;
+    }
 `
 const Logo = styled.img`
     max-height:30px;
