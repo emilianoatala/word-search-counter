@@ -6,6 +6,7 @@ import { breakpoint, primaryColor } from '../../styles/constants';
 
 const Container = styled(Wrapper)`
     width:90%;
+    background-color:white;
     @media (min-width: ${breakpoint}){
         width:${props => props.width || "auto"};
     }

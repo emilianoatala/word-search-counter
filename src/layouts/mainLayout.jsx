@@ -31,7 +31,7 @@ const MainLayout = ({children}) => {
     return ( 
         <Container> 
             <Header>
-                <Logo src={logotype}/>
+                <Logo src={logotype} alt="logo"/>
                 <Title>
                     Word Search Counter
                 </Title>

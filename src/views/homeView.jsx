@@ -42,8 +42,8 @@ const HomeView = () => {
         <MainLayout>
             <Wrapper direction="column" horizontalAlign="center" padding="50px 0">
 
-                <SearchBar placeholder="Search any word (default OIE)" action={setWord}>
-                    <Icon src={searchIcon}/>
+                <SearchBar placeholder="Search a word" action={setWord}>
+                    <Icon src={searchIcon} alt="search"/>
                 </SearchBar>
                 
                 <Paragraph margin="50px 0 30px 0" size="20px">Selected Word:</Paragraph>
